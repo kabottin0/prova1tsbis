@@ -1,61 +1,54 @@
-import React, { CSSProperties } from 'react';
-
+import { Carousel } from 'flowbite-react';
+import image1 from "../assets/ammi.png";
 const HomePage = () => {
-
-
-
   return (
     <>
-      <div>
-        <h1>Top 4 carosello</h1>
+
+      <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+        <label>Top location</label>
+        <Carousel>
+          <img src={image1} alt="..." />
+          <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+          <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+          <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+          <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+        </Carousel>
       </div>
-      <div className="row" style={styleSheet.row}>
+      <div className='mt-6'>
         <label>Location</label>
-        <div className="location-container" style={styleSheet.locationContainer}>
-          <div style={styleSheet.locationDiv}>
-            <a href='/ville'>
-              <h1>Ville</h1>
-            </a>
-          </div>
-          <div style={styleSheet.locationDiv}>
-          <a href='/sale'>
-              <h1>Sale</h1>
-            </a>
-          </div>
-          <div style={styleSheet.locationDiv}>
-          <a href='/dimore'>
-              <h1>Dimore</h1>
-            </a>
-          </div>
-          <div style={styleSheet.locationDiv}>
-          <a href='/catering'>
-              <h1>Catering</h1>
-            </a>
-          </div>
+      </div>
+      {/* inserire immagine dentro i cerchi */}
+      <div className="bg-gray-400 p-2 grid gap-2 grid-cols-4">
+        <div className="rounded-full h-16 w-16 flex bg-teal-400 m-6">
+          <a href='/ville' className=' m-4'>
+            <h1>Ville</h1>
+          </a>
+        </div>
+        <div className="rounded-full h-16 w-16 flex bg-teal-400 m-6">
+          <a href='/sale' className=' m-4'>
+            <h1>Sale</h1>
+          </a>
+        </div>
+        <div className="rounded-full h-16 w-16 flex bg-teal-400 m-6">
+          
+          <a href='/dimore' className=' m-4'>
+            <h1>Dimore</h1>
+          </a>
+        </div>
+        <div className="rounded-full h-16 w-16 flex bg-teal-400 m-6">
+          <a href='/catering' className=' m-4'>
+            <h1>Catering</h1>
+          </a>
         </div>
       </div>
-      <h2>Info</h2>
-      <div>
-        <footer>
-          <h2>Questo è il footer</h2>
-        </footer>
-      </div>
+      <footer>
+        {/* inserire info  */}
+        <div>footer</div>
+      </footer>
     </>
   );
-}
+};
+
 
 export default HomePage;
 
-const styleSheet: { [key: string]: CSSProperties } = {
-  row: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  locationContainer: {
-    display: 'flex',
-    justifyContent: 'space-around'
-  },
-  locationDiv: {
-    margin: '0 10px'
-  }
-};

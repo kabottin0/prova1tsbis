@@ -7,7 +7,7 @@ const Menu = () => {
       <h2>personalizza il tuo menù</h2>
     </div>
     <div>
-        <h3>Scegli il tuo budget</h3>
+        <h3>Scegli il tuo budget!</h3>
     </div>
     <div>
         <h3>Scegli l'antipasto</h3>
