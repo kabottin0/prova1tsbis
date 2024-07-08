@@ -4,6 +4,10 @@ const cors = require('cors');
 const itemsRouter = require("./routes/items")
 const usersRouter = require("./routes/users")
 const villeRouter = require("./routes/villa")
+const saleRouter = require("./routes/sale")
+const dimoreRouter = require("./routes/dimore")
+const cateringRouter = require("./routes/caterings")
+
 
 const app = express();
 const port = 5000;
@@ -20,24 +24,15 @@ connection.once('open', () => {
   console.log('Connessione al database MongoDB stabilita con successo');
 });
 
+app.use("/", itemsRouter)
+app.use("/", usersRouter)
+app.use("/", villeRouter)
+app.use("/", saleRouter)
+app.use("/", dimoreRouter)
+app.use("/", cateringRouter)
 
-// Route di esempio
-// app.get('/items', async (req, res) => {
-//     try {
-//     const items = await itemSchema.find()
-//     //   const items = await Item.find();
-//       res.json(items);
-//     } catch (err) {
-//       res.status(500).send('Errore nel recupero degli elementi');
-//     }
-//   });
 
-// app.get("/", (req, res) => {
-//   res.send("hello world")
-// })
-app.use("/", itemsRouter )
-app.use("/", usersRouter )
-app.use("/", villeRouter )
+
 
 
 // Avvio del server
