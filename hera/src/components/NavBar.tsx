@@ -4,29 +4,19 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex items-center justify-between flex-wrap bg-yellow-200 p-6">
-        <div className="block lg:hidden">
-          <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-            <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-          </button>
+      <nav className="bg-white p-4 flex justify-between items-center sticky top-0 z-50">
+        <div className="flex space-x-4">
+          <NavLink to="/" className="font-bold hover:underline" style={{ color: '#D4AF37' }}>HOME</NavLink>
+          <NavLink to="/ville" className="hover:underline" style={{ color: '#D4AF37' }}>VILLE</NavLink>
+          <NavLink to="/sale" className="hover:underline" style={{ color: '#D4AF37' }}>SALE</NavLink>
+          <NavLink to="/dimore" className="hover:underline" style={{ color: '#D4AF37' }}>DIMORE</NavLink>
+          <NavLink to="/catering" className="hover:underline" style={{ color: '#D4AF37' }}>CATERING</NavLink>
         </div>
-        <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-          <div className="text-sm lg:flex-grow">
-            <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-              Home
-            </a>
-            <a href="/location" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-              Location
-            </a>
-          </div>
-          <div>
-            <a href="/login" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0 mr-2">Login</a>
-            <a href="#" className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign Up</a>
-
-          </div>
+        <div className="flex space-x-2">
+          <button className="text-white px-4 py-2 rounded-md" style={{ backgroundColor: '#D4AF37' }}>LOGIN</button>
+          <button className="border px-4 py-2 rounded-md" style={{ color: '#D4AF37', borderColor: '#D4AF37' }}>SIGNUP</button>
         </div>
       </nav>
-
     </>
   )
 }
