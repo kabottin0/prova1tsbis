@@ -15,16 +15,16 @@ const Footer = () => {
           <div className="p-8 flex justify-between items-center">
             <div>
               <h2 className="text-white text-lg font-bold">TALK TO US</h2>
-              <p className="text-white mt-2">(04) 298 3985 2092</p>
+              <p className="text-white mt-2">Numero di telefono aziendale</p>
               <p className="text-white">+76 209 1092 4095</p>
-              <p className="text-white italic mt-2">info@mollysrestaurant.com</p>
+              <p className="text-white italic mt-2">email aziendale</p>
             </div>
             <div className="flex space-x-4">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                f
+                Collegamento facebook
               </a>
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                i
+                Collegamento instagram
               </a>
             </div>
           </div>

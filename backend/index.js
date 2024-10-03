@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -15,6 +17,8 @@ const cateringRouter = require("./routes/caterings")
 const awsAccessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const awsSecretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 
+console.log( 'env::::', process.env.AWS_ACCESS_KEY_ID); // Dovrebbe stampare la tua chiave
+console.log(process.env.AWS_SECRET_ACCESS_KEY); // Dovrebbe stampare la tua chiave segreta
 
 const app = express();
 const port = 5000;

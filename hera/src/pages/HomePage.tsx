@@ -116,16 +116,25 @@ const HomePage = () => {
         <div className="text-center w-3/12"></div>
       </div>
 
-      {/* <div className="flex justify-center pt-8">
+      <div className="flex justify-center pt-8">
         <div className="w-6/12 h-1 bg-white opacity-50 transform rotate-1"></div>
       </div>
       <div className="w-full pt-8">
-        <img src="https://via.placeholder.com/1920x600" alt="Immagine Rettangolare" className="w-full h-auto" />
+        <p>
+          Il nostro sito è la piattaforma ideale per le coppie in cerca della location perfetta per il loro matrimonio o per chiunque stia organizzando un evento speciale. Qui potrai trovare una vasta selezione di strutture ricettive, suddivise in quattro categorie principali: ville per ricevimenti, eleganti sale per banchetti, dimore nobiliari dal fascino storico e servizi di catering professionale. Ogni opzione è accuratamente selezionata per offrirti il massimo della qualità, garantendo che il tuo evento si svolga in un ambiente unico e memorabile.
+        </p>
+        <p>
+          Il nostro sistema di valutazione si basa interamente sulla qualità del servizio offerto dalle strutture, garantendo un'ordinamento meritocratico. Quando accedi a una delle categorie – villa per ricevimenti, sala per banchetti, dimora nobiliare o servizio catering – le strutture vengono elencate in base ai voti ricevuti dagli utenti. Non ci sono posizioni privilegiate a pagamento, ma un ranking trasparente determinato dalle recensioni reali di chi ha già usufruito delle location. Ogni coppia che visita una struttura, sia per un preventivo che per l'evento stesso, riceverà un codice con cui lasciare il proprio voto. In questo modo, solo le strutture con il miglior riscontro da parte degli utenti ottengono un posto nella sezione "Top Location".
+        </p>
+        <p>
+          Gli utenti registrati avranno accesso esclusivo alla sezione dedicata alla personalizzazione del menù, dove potranno creare un’esperienza culinaria su misura per il loro evento. Una volta registrati, sarà possibile selezionare le opzioni proposte dalla location scelta, adattando il menù alle proprie esigenze e preferenze. Questa funzionalità permette alle coppie di avere il pieno controllo sulla scelta dei piatti e di coordinare ogni dettaglio del banchetto in modo semplice e intuitivo, garantendo un servizio perfettamente in linea con i loro desideri.
+
+        </p>
       </div>
 
       <div className="flex justify-center pt-8">
         <div className="w-6/12 h-1 bg-white opacity-50 transform rotate-1"></div>
-      </div> */}
+      </div>
 
       <div className="flex justify-around items-center pt-8">
         <a href="/ville" className="relative group w-32 h-32 rounded-full border-4 border-white overflow-hidden">
@@ -154,7 +163,7 @@ const HomePage = () => {
         </a>
       </div>
 
-      <div className="max-w-4xl mx-auto my-8 p-4 bg-white rounded-lg">
+      {/* <div className="max-w-4xl mx-auto my-8 p-4 bg-white rounded-lg">
         <h2 className="text-lg font-bold mb-4" style={{ color: '#D4AF37' }}>Q & A</h2>
         {questions.map((item, index) => (
           <div key={index}>
@@ -169,7 +178,7 @@ const HomePage = () => {
             )}
           </div>
         ))}
-      </div>
+      </div> */}
 
     </>
   );
