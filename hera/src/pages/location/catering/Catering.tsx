@@ -8,7 +8,7 @@ const Catering = () => {
     <>
       <div className="p-4">
         <div className="mb-4">
-          <h2 className="text-3xl font-bold"> Sala {cateringid}</h2>
+          <h2 className="text-3xl font-bold"> Catering {cateringid}</h2>
         </div>
         <div className="mb-4">
           <p>Questa è un bellissimo Catering situata in una posizione pittoresca. Offre un ambiente tranquillo e confortevole con tutte le comodità moderne.</p>

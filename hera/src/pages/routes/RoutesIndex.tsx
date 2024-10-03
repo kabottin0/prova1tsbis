@@ -14,6 +14,7 @@ import DimoraMenu from '../location/dimore/DimoraMenu';
 import CateringMenu from '../location/catering/CateringMenu';
 import Dimora from '../location/dimore/Dimora';
 import Catering from '../location/catering/Catering';
+import Img from '../Img';
 
 
 
@@ -35,6 +36,7 @@ const RoutesIndex = () => {
         <Route path='/menu/sala/:locationId' element={<SalaMenu />}></Route>
         <Route path='/menu/dimora/:locationId' element={<DimoraMenu />}></Route>
         <Route path='/menu/catering/:locationId' element={<CateringMenu />}></Route>
+        <Route path='/upload' element={<Img />}></Route>
 
 
 

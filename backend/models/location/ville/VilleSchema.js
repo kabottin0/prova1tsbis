@@ -27,6 +27,9 @@ const Ville = new mongoose.Schema({
   },
   description: {
     type: String,
+  },
+  like: {
+    type: Number
   }
 }, {
   timestamps: true 
