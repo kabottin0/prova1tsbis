@@ -20,5 +20,6 @@ exports.createSala = async (req, res) => {
         res.status(201).json(sala);
     } catch (error) {
         res.status(400).json({ message: 'Error creating sala', error });
+        console.log('body:::', error)
     }
 };

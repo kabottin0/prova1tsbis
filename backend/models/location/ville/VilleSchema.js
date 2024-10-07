@@ -25,14 +25,17 @@ const Ville = new mongoose.Schema({
   imgCover: {
     type: String,
   },
-  description: {
+  shortDescription: {
+    type: String,
+  },
+  longDescription: {
     type: String,
   },
   like: {
     type: Number
   }
 }, {
-  timestamps: true 
+  timestamps: true
 });
 
 module.exports = mongoose.model('Ville', Ville);

@@ -1,14 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ICatering, IDimore, IImage, ISale, IVille } from "../utils/LocationInterface";
-import { fetchAllData } from "../utils/apiUtils";
+import { useFetchData } from "../utils/apiUtils";
 
 const HomePage = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [ville, setVille] = useState<IVille[]>([]);
-  const [sale, setSale] = useState<ISale[]>([]);
-  const [dimore, setDimore] = useState<IDimore[]>([]);
-  const [catering, setCatering] = useState<ICatering[]>([]);
+  const { ville, sale, dimore, catering, loading, error} = useFetchData()
   const [images, setImages] = useState<IImage[]>([]);
 
   const questions = [
@@ -26,22 +23,7 @@ const HomePage = () => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { ville, sale, dimore, catering } = await fetchAllData();
-        setVille(ville);
-        setSale(sale);
-        setDimore(dimore);
-        setCatering(catering);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
 
-    fetchData();
-
-  }, []);
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -80,33 +62,33 @@ const HomePage = () => {
         <div className="text-center w-6/12 ">
           <div className="flex">
             <div className="w-3/12 mr-2 p-1 bg-white">
-              {image && <img src={image} alt="Immagine 1" className="w-full" />}
               {ville[0] && (
                 <a href={`/ville/${ville[0]?.name}`}>
+                  {image && <img src={image} alt="Immagine 1" className="w-full" />}
                   <p>{ville[0]?.name}</p>
                 </a>
               )}
             </div>
             <div className="w-3/12 mr-2 p-1 bg-white">
-              {image && <img src={image} alt="Immagine 1" className="w-full" />}
               {sale[0] && (
                 <a href={`/sale/${sale[0]?.name}`}>
+                  {image && <img src={image} alt="Immagine 1" className="w-full" />}
                   <p>{sale[0]?.name}</p>
                 </a>
               )}
             </div>
             <div className="w-3/12 mr-2 p-1 bg-white">
-              {image && <img src={image} alt="Immagine 1" className="w-full" />}
               {dimore[0] && (
                 <a href={`/dimore/${dimore[0]?.name}`}>
+                  {image && <img src={image} alt="Immagine 1" className="w-full" />}
                   <p>{dimore[0]?.name}</p>
                 </a>
               )}
             </div>
             <div className="w-3/12 mr-2 p-1 bg-white">
-              {image && <img src={image} alt="Immagine 1" className="w-full" />}
               {catering[0] && (
                 <a href={`/catering/${catering[0]?.name}`}>
+                  {image && <img src={image} alt="Immagine 1" className="w-full" />}
                   <p>{catering[0]?.name}</p>
                 </a>
               )}

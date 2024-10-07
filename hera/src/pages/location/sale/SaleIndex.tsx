@@ -1,44 +1,50 @@
 import { Card, Rating } from "flowbite-react";
 import image1 from "../../ammi.png";
+import { useEffect, useState } from "react";
+import { ISale } from "../../../utils/LocationInterface";
+import axios from "axios";
 
-// Esempio di array di dati delle ville
-const sale = [
-  {
-    id: 1,
-    title: "nome sala 1",
-    description: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
-    imgSrc: image1,
-    like: 2,
-  },
-  {
-    id: 2,
-    title: "nome sala 2",
-    description: "Details about another significant acquisition in the tech industry.",
-    imgSrc: image1,
-    like: 3,
-  },
-  // Aggiungi altre ville qui
-];
 
 const SaleIndex = () => {
-  // Ordina le ville in base al campo 'like' in ordine decrescente
-  const sortedSale = sale.sort((a, b) => b.like - a.like);
+  const [sale, setSale] = useState<ISale[]>([]);
+  const [currentPage, setCurrentPage] = useState<number>(1); 
+  const salePerPage = 10; 
 
+  useEffect(() => {
+    const fetchSale = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/sale');
+        let saleData = response.data;
+        saleData = saleData.sort((a: ISale, b: ISale) => (b.like || 0) - (a.like || 0));
+        setSale(saleData);
+      } catch (error) {
+        console.error('Error fetching ville:', error);
+      }
+    };
+  
+    fetchSale();
+  }, []);
+
+  const indexOfLastSale= currentPage * salePerPage;
+  const indexOfFirstSale = indexOfLastSale - salePerPage;
+  const currentSale = sale.slice(indexOfFirstSale, indexOfLastSale); 
 
   return (
     <>
       <div>
         <h1>Ville in lista by mi piace</h1>
-        {sortedSale.map((sala, index) => (
-          <div className="p-2 grid gap-4 grid-cols-2">
-            <div key={sala.id} className="flex items-center mb-6">
-              <div className="text-2xl font-bold text-gray-900 dark:text-white mr-4">{index + 1}</div>
-              <Card className="max-w-sm" imgSrc={sala.imgSrc} horizontal>
+        {currentSale.map((sala, index) => (
+          <div className="p-2 grid gap-4 grid-cols-2" key={sala?._id}>
+            <div className="flex items-center mb-6">
+              <div className="text-2xl font-bold text-gray-900 dark:text-white mr-4">
+                {index + 1 + indexOfFirstSale}
+              </div>
+              <Card className="max-w-sm" imgSrc={sala?.imgCover} horizontal>
                 <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                  {sala.title}
+                  {sala?.name}
                 </h5>
                 <p className="font-normal text-gray-700 dark:text-gray-400">
-                  {sala.description}
+                  {sala?.shortDescription}
                 </p>
               </Card>
             </div>
@@ -49,16 +55,32 @@ const SaleIndex = () => {
                 <Rating.Star />
                 <Rating.Star />
                 <Rating.Star filled={false} />
-                <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">4.95 out of 5</p>
+                <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">{sala?.like || 0}</p>
               </Rating>
-              <a href={`/sale/${sala.title}`}>
-                <h3>Clicca sulla sala scelta</h3>
+              <a href={`/sale/${sala?.name}`}>
+                <h3>Clicca sulla villa scelta</h3>
               </a>
             </div>
-
           </div>
         ))}
-        <p>paginazione</p>
+
+        {/* Paginazione */}
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={() => setCurrentPage(1)}
+            disabled={currentPage === 1}
+            className={`px-4 py-2 mx-1 border ${currentPage === 1 ? 'bg-gray-300' : 'bg-blue-500 text-white'}`}
+          >
+            Pagina 1
+          </button>
+          <button
+            onClick={() => setCurrentPage(2)}
+            disabled={currentPage === 2}
+            className={`px-4 py-2 mx-1 border ${currentPage === 2 ? 'bg-gray-300' : 'bg-blue-500 text-white'}`}
+          >
+            Pagina 2
+          </button>
+        </div>
       </div>
     </>
   );

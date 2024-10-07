@@ -1,17 +1,31 @@
 import { useParams } from 'react-router-dom';
+import { useFetchData } from '../../../utils/apiUtils';
+import { IVille } from '../../../utils/LocationInterface';
+import { useEffect, useState } from 'react';
 
 const Sala = () => {
   const { saleid } = useParams()
+  const { sale, loading, error } = useFetchData();
+  const [sala, setSala] = useState<IVille | null>(null);
+
+
+
+  useEffect(() => {
+    if (sale.length > 0) {
+      const selectedSala = sale.find((s) => s.name === saleid); 
+      setSala(selectedSala || null); 
+    }
+  }, [sale, saleid]); 
  
  
   return (
     <>
       <div className="p-4">
         <div className="mb-4">
-          <h2 className="text-3xl font-bold"> Sala {saleid}</h2>
+          <h2 className="text-3xl font-bold"> Sala {sala?.name}</h2>
         </div>
         <div className="mb-4">
-          <p>Questa è una bellissima sala situata in una posizione pittoresca. Offre un ambiente tranquillo e confortevole con tutte le comodità moderne.</p>
+          <p>{sala?.shortDescription}</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
           <div>
@@ -31,7 +45,7 @@ const Sala = () => {
           </div>
         </div>
         <div className="mb-4">
-          <p>Ulteriori informazioni sulla sala, i servizi offerti, le attrazioni vicine e altro ancora.</p>
+          <p>{sala?.longDescription}</p>
         </div>
         <a href={`/menu/sala/${saleid}`} className="text-blue-500 hover:underline">
           <h3>Personalizza il tuo menù</h3>

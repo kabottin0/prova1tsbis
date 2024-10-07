@@ -12,22 +12,28 @@ const CateringsSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true
+    required: true,
+    match: [/.+@.+\..+/, 'Please enter a valid email address']
   },
   phone: {
-    type: Number,
+    type: String,
     required: true
   },
   vatNumber: {
-    type: Number,
+    type: String,
     required: true
   },
-  createdAt: {
-    type: Date
+  imgCover: {
+    type: String,
   },
-  updatedAt: {
-    type: Date
+  description: {
+    type: String,
+  },
+  like: {
+    type: Number
   }
+}, {
+  timestamps: true 
 });
 
 

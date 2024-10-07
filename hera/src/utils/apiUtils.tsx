@@ -1,5 +1,16 @@
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-export const fetchAllData = async () => {
+import { ICatering, IDimore, ISale, IVille } from './LocationInterface';
+
+export const useFetchData = () => {
+  const [ville, setVille] = useState<IVille[]>([]);
+  const [sale, setSale] = useState<ISale[]>([]);
+  const [dimore, setDimore] = useState<IDimore[]>([]);
+  const [catering, setCatering] = useState<ICatering[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchAllData = async () => {
     try {
       const [villeResponse, saleResponse, dimoreResponse, cateringResponse] = await Promise.all([
         axios.get('http://localhost:5000/ville'),
@@ -7,15 +18,24 @@ export const fetchAllData = async () => {
         axios.get('http://localhost:5000/dimore'),
         axios.get('http://localhost:5000/catering')
       ]);
-      
-      return {
-        ville: villeResponse.data,
-        sale: saleResponse.data,
-        dimore: dimoreResponse.data,
-        catering: cateringResponse.data
-      };
+
+      setVille(villeResponse.data);
+      setSale(saleResponse.data);
+      setDimore(dimoreResponse.data);
+      setCatering(cateringResponse.data);
     } catch (error) {
-      console.error('There was an error fetching the data!', error);
-      throw error; // Puoi rilanciare l'errore se vuoi gestirlo altrove
+      console.error('Error fetching data:', error);
+      setError('Failed to fetch data');
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  return { ville, sale, dimore, catering, loading, error };
+};
+
+

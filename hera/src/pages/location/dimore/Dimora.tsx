@@ -1,17 +1,29 @@
 import { useParams } from 'react-router-dom';
+import { useFetchData } from '../../../utils/apiUtils';
+import { IDimore } from '../../../utils/LocationInterface';
+import { useEffect, useState } from 'react';
 
 const Dimora = () => {
   const { dimoreid } = useParams()
- 
+  const { dimore, loading, error } = useFetchData(); 
+  const [dimora, setDimora] = useState<IDimore | null>(null); 
+  
+  useEffect(() => {
+    if (dimore.length > 0) {
+      const selectedDimora = dimore.find((d) => d.name === dimoreid); 
+      setDimora(selectedDimora || null); 
+    }
+  }, [dimore, dimoreid]); 
+  
  
   return (
     <>
       <div className="p-4">
         <div className="mb-4">
-          <h2 className="text-3xl font-bold"> dimora {dimoreid}</h2>
+          <h2 className="text-3xl font-bold"> Dimora {dimora?.name}</h2>
         </div>
         <div className="mb-4">
-          <p>Questa è una bellissima dimora situata in una posizione pittoresca. Offre un ambiente tranquillo e confortevole con tutte le comodità moderne.</p>
+          <p>{dimora?.shortDescription}</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
           <div>
@@ -31,7 +43,7 @@ const Dimora = () => {
           </div>
         </div>
         <div className="mb-4">
-          <p>Ulteriori informazioni sulla dimora, i servizi offerti, le attrazioni vicine e altro ancora.</p>
+          <p>{dimora?.longDescription}</p>
         </div>
         <a href={`/menu/dimora/${dimoreid}`} className="text-blue-500 hover:underline">
           <h3>Personalizza il tuo menù</h3>
