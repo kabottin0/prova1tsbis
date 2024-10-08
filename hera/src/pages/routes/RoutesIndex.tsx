@@ -15,6 +15,14 @@ import CateringMenu from '../location/catering/CateringMenu';
 import Dimora from '../location/dimore/Dimora';
 import Catering from '../location/catering/Catering';
 import Img from '../Img';
+import SignUp from '../Login/Signup';
+import Login from '../Login/Login';
+import SignUpLocation from '../Login/SignUpLocation';
+import SignUpUsers from '../Login/SignUpUsers';
+import LoginLocation from '../Login/LoginLocation';
+import LoginUsers from '../Login/LoginUsers';
+
+
 
 
 
@@ -37,6 +45,17 @@ const RoutesIndex = () => {
         <Route path='/menu/dimora/:locationId' element={<DimoraMenu />}></Route>
         <Route path='/menu/catering/:locationId' element={<CateringMenu />}></Route>
         <Route path='/upload' element={<Img />}></Route>
+        <Route path='/signup' element={<SignUp />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup/location' element={<SignUpLocation />}></Route>
+        <Route path='/signup/users' element={<SignUpUsers />}></Route>
+        <Route path='/login/location' element={<LoginLocation />}></Route>
+        <Route path='/login/user' element={<LoginUsers />}></Route>
+
+
+
+
+
 
 
 

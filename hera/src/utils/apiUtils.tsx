@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ICatering, IDimore, ISale, IVille } from './LocationInterface';
+import { ICatering, IDimore, ISale, IUSers, IVille } from './LocationInterface';
 
 export const useFetchData = () => {
   const [ville, setVille] = useState<IVille[]>([]);
@@ -39,3 +39,31 @@ export const useFetchData = () => {
 };
 
 
+export const useFetchUsers = () => {
+  const [users, setUsers] = useState<IUSers[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const fetchAllData = async () => {
+    try {
+      const [usersResponse] = await Promise.all([
+        axios.get('http://localhost:5000/users'),
+      
+      ]);
+
+      setUsers(usersResponse.data);
+      
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setError('Failed to fetch data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  return { users, loading, error };
+}

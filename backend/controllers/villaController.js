@@ -14,12 +14,14 @@ exports.getVille = async (req, res) => {
 
 
 exports.createVille = async (req, res) => {
+  const villa = new Ville(req.body);
   try {
-    const villa = new Ville(req.body);
+    console.log('villa:::', villa)
     await villa.save();
     res.status(201).json(villa);
   } catch (error) {
     res.status(400).json({ message: 'Error creating user', error });
+    console.log('error:::', error)
   }
 };
 

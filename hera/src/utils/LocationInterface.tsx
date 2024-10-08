@@ -3,6 +3,7 @@ export interface IVille {
     name: string;
     address: string;
     email: string;
+    password: string;
     phone: string;
     vatNumber: string;
     imgCover?: string; // Optional
@@ -18,6 +19,7 @@ export interface ISale {
     name: string;
     address: string;
     email: string;
+    password: string;
     phone: string;
     vatNumber: string;
     imgCover?: string; // Optional
@@ -33,6 +35,7 @@ export interface IDimore {
     name: string;
     address: string;
     email: string;
+    password: string;
     phone: string;
     vatNumber: string;
     imgCover?: string; // Optional
@@ -48,6 +51,7 @@ export interface ICatering {
     name: string;
     address: string;
     email: string;
+    password: string;
     phone: string;
     vatNumber: string;
     imgCover?: string; // Optional
@@ -62,3 +66,27 @@ export interface ICatering {
     url: string;
     _id: string;
   }
+
+  export interface ISubmit {
+    name: string;
+    address: string;
+    email: string;
+    password: string;
+    phone: string;
+    vatNumber: string;
+    imgCover?: string; // Optional
+    shortDescription?: string; // Optional
+    longDescription?: string;
+    like?: number; // Optional
+    createdAt?: Date; // Automatically added by Mongoose timestamps
+    updatedAt?: Date; // Automatically added by Mongoose timestamps
+}
+export interface IUSers {
+    name: string;
+    surname: string;
+    password: string;
+    email: string;
+    phone: string;
+    createdAt?: Date; // Automatically added by Mongoose timestamps
+    updatedAt?: Date; // Automatically added by Mongoose timestamps
+}

@@ -14,13 +14,17 @@ const Users = new mongoose.Schema({
     type: String,
     required: true
   },
+  password: {
+    type: String,
+    required: true
+  },
   phone: {
     type: Number,
     required: true
   },
   weddinDate: {
     type: Date,
-    required: true
+    required: false
   },
   role: {
     type: String,

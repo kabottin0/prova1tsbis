@@ -14,6 +14,10 @@ const Ville = new mongoose.Schema({
     required: true,
     match: [/.+@.+\..+/, 'Please enter a valid email address']
   },
+  password: {
+    type: String,
+    required: true
+  },
   phone: {
     type: String,
     required: true
